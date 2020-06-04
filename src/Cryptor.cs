@@ -13,7 +13,8 @@ namespace DutchGrit.Afas
 
 
         /// <summary>
-        /// Encryptie zoals gebruikt door de Afas Remote Tool.
+        /// Simple string encryption. Used for storing a token in the json file.
+        /// Same as used by : Afas Remote Tool.
         /// </summary>
         /// <param name="cipherText"></param>
         /// <param name="passPhrase"></param>

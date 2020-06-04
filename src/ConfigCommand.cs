@@ -5,7 +5,6 @@ using System.Text;
 namespace DutchGrit.Afas
 {
 
-
     public static class ConfigCommand
     {
         public static void AddConfigCommand(this CommandLineApplication app, ConfigFile config)

@@ -7,11 +7,15 @@ namespace DutchGrit.Afas
     {
 
         public static string configFileName = "afas-cli.json";
+
         public int MemberNumber { get; set; }
         public int Environment { get; set; }
 
         //Either a Token is specified directly
 
+        /// <summary>
+        /// Encrypted version of the token.
+        /// </summary>
         public string EncToken { get; set; }
 
 

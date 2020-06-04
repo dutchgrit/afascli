@@ -22,8 +22,6 @@ namespace DutchGrit.Afas
                 {
                     IAfasClient client = new AfasClient(config.MemberNumber, config.Token, (Environments)config.Environment);
 
-
-                    //TODO : werkt nog niet , want exceptions komen niet door..
                     //try
                     //{
                     //    var version = client.GetVersion();
@@ -33,7 +31,6 @@ namespace DutchGrit.Afas
                     //{
                     //    Console.WriteLine($"Afas version     : ", "AppVersion connector not installed");
                     //}
-
 
                     var info = client.GetSessionInfo();
                     Console.WriteLine($"Application Name: {info.Info.ApplicationName} ");
@@ -62,8 +59,6 @@ namespace DutchGrit.Afas
                             Console.WriteLine($"{item.Id} - {item.Description}");
                         }
                     }
-
-
 
                 });
             });

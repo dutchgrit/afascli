@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "AfasClient.Cli": {
+      "commandName": "Project"
+    }
+  }
+}

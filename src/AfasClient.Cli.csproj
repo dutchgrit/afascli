@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>DutchGrit.Afas</RootNamespace>
+    <AssemblyName>afas-cli</AssemblyName>
+    <Version>1.0.1</Version>
+    <Authors>Dutch Grit</Authors>
+    <Company>Dutch Grit</Company>
+    <Product>Afas Commandline Tool</Product>
+    <Copyright>DutchGrit</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\afasclientlibrary\src\AfasClient.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -3,8 +3,11 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    paths: 'src/**'
+
+defaults:
+  run:
+    working-directory: src
 
 jobs:
   build:

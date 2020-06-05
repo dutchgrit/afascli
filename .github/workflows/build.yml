@@ -42,5 +42,5 @@ jobs:
       run: dotnet pack --configuration Release -p:PackageVersion=$package_version
       
     - name: Push
-      run: dotnet nuget push **/*.nupkg --no-symbols --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }}
+      run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }} -n
      

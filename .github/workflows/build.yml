@@ -21,7 +21,7 @@ jobs:
       env:
         FIRST_NAME: Mona
         middle_name: The
-        Last_Name: ${{ format('1.0.{0}',env.GITHUB_RUN_NUMBER }}
+        Last_Name: ${{ format('1.0.{0}',env.GITHUB_RUN_NUMBER) }}
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:

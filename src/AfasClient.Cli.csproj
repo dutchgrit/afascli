@@ -5,11 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>DutchGrit.Afas</RootNamespace>
     <AssemblyName>afas-cli</AssemblyName>
-    <Version>1.0.1</Version>
+    <VersionPrefix>1.0</VersionPrefix>
     <Authors>Dutch Grit</Authors>
     <Company>Dutch Grit</Company>
     <Product>Afas Commandline Tool</Product>
     <Copyright>DutchGrit</Copyright>
+    <PackageId>Afas-Cli</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

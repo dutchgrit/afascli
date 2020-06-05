@@ -17,20 +17,13 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Set Version 
-      run: echo "::set-env name=testparam::1.0.$GITHUB_RUN_NUMBER"
+      run: echo "::set-env name=package_version::$major_version.$minor_version.$GITHUB_RUN_NUMBER"
       env:
         major_version: 1
         minor_version: 0
     - name: Test Verion 
-      run: echo $testparam
+      run: echo $package_version
       
-    - name: Hello world
-      run: echo Hello world $FIRST_NAME $middle_name $Last_Name $GITHUB_RUN_NUMBER
-      env:
-        #FIRST_NAME: $GITHUB_RUN_NUMBER  werkt NIET
-        FIRST_NAME: lucas
-        middle_name: '1.0.$GITHUB_RUN_NUMBER'
-        Last_Name: ${{ format('1.0.{0}', env.GITHUB_RUN_NUMBER) }}
     #- name: Setup .NET Core
     #  uses: actions/setup-dotnet@v1
     #  with:

@@ -3,7 +3,8 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
-
+    
+    
 defaults:
   run:
     working-directory: src  
@@ -21,19 +22,25 @@ jobs:
       env:
         major_version: 1
         minor_version: 0
+        
     - name: Test Verion 
       run: echo $package_version
       
-    #- name: Setup .NET Core
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 3.1.101
-    #    key: installnet
-    #- name: Install dependencies
-    #  run: dotnet restore
-    
-   # - name: Build
-   #   run: dotnet build --configuration Release --no-restore
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+        key: installnet
+        
+    - name: Install dependencies
+      run: dotnet restore
       
-   # - name: Pack
-   #   run: dotnet pack --configuration Release
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      
+    - name: Pack
+      run: dotnet pack --configuration Release -p:PackageVersion=$package_version
+      
+    - name: Push
+      run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }}
+     

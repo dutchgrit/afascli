@@ -7,8 +7,8 @@ on:
 
 defaults:
   run:
-    working-directory: src
-
+    working-directory: src  
+    
 jobs:
   build:
 
@@ -16,13 +16,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Hello world
+      run: echo Hello world $FIRST_NAME $middle_name $Last_Name!
+      env:
+        FIRST_NAME: Mona
+        middle_name: The
+        Last_Name: 1.0.${{ GITHUB_RUN_NUMBER}}
+          
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+        key: installnet
     - name: Install dependencies
       run: dotnet restore
+    
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      
+    - name: Pack
+      run: dotnet pack --configuration Release

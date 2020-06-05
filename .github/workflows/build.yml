@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Set Version 
-      run: echo "::set-env name=testparam::lucas"
+      run: echo "::set-env name=testparam::$GITHUB_RUN_NUMBER"
     - name: Test Verion 
       run: echo $testparam
       
@@ -28,11 +28,11 @@ jobs:
         FIRST_NAME: lucas
         middle_name: '1.0.$GITHUB_RUN_NUMBER'
         Last_Name: ${{ format('1.0.{0}', env.GITHUB_RUN_NUMBER) }}
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
-        key: installnet
+    #- name: Setup .NET Core
+    #  uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: 3.1.101
+    #    key: installnet
     #- name: Install dependencies
     #  run: dotnet restore
     

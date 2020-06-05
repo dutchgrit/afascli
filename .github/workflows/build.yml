@@ -15,14 +15,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+      
     - name: Hello world
       run: echo Hello world $FIRST_NAME $middle_name $Last_Name $GITHUB_RUN_NUMBER
       env:
         FIRST_NAME: Mona
         middle_name: The
-        Last_Name: '1.0.${{ env.GITHUB_RUN_NUMBER }}'
-          
+        Last_Name: ${{ format('1.0.{0}',env.GITHUB_RUN_NUMBER }}
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:

@@ -3,7 +3,6 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
-    paths: 'src/**'
 
 defaults:
   run:
@@ -22,7 +21,7 @@ jobs:
       env:
         FIRST_NAME: Mona
         middle_name: The
-        Last_Name: 1.0.${{ GITHUB_RUN_NUMBER}}
+        Last_Name: 1.0.$GITHUB_RUN_NUMBER
           
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

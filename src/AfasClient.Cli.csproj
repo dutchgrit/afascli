@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DutchGrit.AfasClient" Version="1.0.0.25" />
+    <PackageReference Include="DutchGrit.AfasClient" Version="1.0.0.26" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>

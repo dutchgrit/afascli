@@ -1,2 +1,60 @@
-# afascli
-An Afas CommandLine tool for connection info, token requests, class generation and more...   
+![.NET Core](https://github.com/dutchgrit/afascli/workflows/.NET%20Core/badge.svg)
+
+
+# afas - cli
+An Afas CommandLine tool for connection info, token requests, class generation and more.
+Use this tool to generate the C# typed classes, you need for the [AfasClient library](https://github.com/dutchgrit/afasclient). 
+
+
+## Prerequisites
+
+You need to have the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) installed.  
+
+## Installation
+
+Run this command to install the afas-cli tool globally.
+```
+dotnet tool install afas-cli --global
+```
+
+## Usage
+
+### Setup connection to your 
+
+Open a commandprompt at the location of your project.  
+
+```
+afas-cli config
+```
+
+Provide the environment settings and token. The settings are saved in the file `afas-cli.json`. The token is stored encrypted. If you don't have a token yet, you can request one with the 'tokenrequest' and 'tokenactivate' commands. 
+
+### Generate c-sharp GetConnector and UpdateConnector files
+
+To generate the files needed for the [AfasClient library](https://github.com/dutchgrit/afasclient) , run the following command. 
+
+```
+afas-cli generate
+```
+
+### Request a token 
+
+If you don't have a token, you can request one. This requires that you run the config and provide it with the ApiKey and EnvironmentKey. Both key's can be found in Afas Profit in the definition of your AppConnector.
+
+```
+afas-cli tokenrequest --user 12345.yourname
+```
+
+After you receive the mail, you can activate (actual get the token) by running
+
+```
+afas-cli tokenactivate --user 12345.yourname --code <activationcode-by-mail> 
+```
+
+
+
+
+
+
+
+

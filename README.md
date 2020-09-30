@@ -8,7 +8,9 @@ Use this tool to generate the C# typed classes, you need for the [AfasClient lib
 
 ## Prerequisites
 
-You need to have the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) installed.  
+You need to have the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) installed to use this tool.
+
+> The generated code, along with the `DutchGrit.AfasClient` library, is .NET Standard 2.0.
 
 ## Installation
 
@@ -19,7 +21,7 @@ dotnet tool install afas-cli --global
 
 ## Usage
 
-### Setup connection to your 
+### Setup connection to your Afas environment 
 
 Open a commandprompt at the location of your project.  
 
@@ -29,9 +31,9 @@ afas-cli config
 
 Provide the environment settings and token. The settings are saved in the file `afas-cli.json`. The token is stored encrypted. If you don't have a token yet, you can request one with the 'tokenrequest' and 'tokenactivate' commands. 
 
-### Generate c-sharp GetConnector and UpdateConnector files
+### Generate the GetConnector and UpdateConnector classes
 
-To generate the files needed for the [AfasClient library](https://github.com/dutchgrit/afasclient) , run the following command. 
+To generate the classes needed for the [AfasClient library](https://github.com/dutchgrit/afasclient) , run the following command. 
 
 ```
 afas-cli generate

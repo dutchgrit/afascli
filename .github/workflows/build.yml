@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Set Version 
-      run: echo "set package_version=%major_version%.$minor_version.$GITHUB_RUN_NUMBER"
+      run: echo set package_version=$major_version.$minor_version.$GITHUB_RUN_NUMBER
       env:
         major_version: 1
         minor_version: 0

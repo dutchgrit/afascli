@@ -29,7 +29,7 @@ namespace DutchGrit.Afas
                 });
                 cmd.OnExecuteAsync(async (cancellationtoken) =>
                 {
-                    OtpTokenClient client = new OtpTokenClient(config.MemberNumber, config.ApiKey
+                    AfasOtpClient client = new AfasOtpClient(config.MemberNumber, config.ApiKey
                         , config.EnvironmentKey, (Environments)config.Environment);
 
                     try

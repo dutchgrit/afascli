@@ -1,8 +1,7 @@
 name: .NET Core
 
 on:
-  push:
-    branches: [master]
+  workflow_dispatch:
     
 defaults:
   run:
@@ -14,25 +13,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Set Version 
-      run: echo set package_version=$major_version.$minor_version.$GITHUB_RUN_NUMBER
-      env:
-        major_version: 1
-        minor_version: 0
-        
-    - name: Test Verion 
-      run: echo %package_version%
-         
+          
     - name: Install dependencies
       run: dotnet restore
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
       
-    #- name: Pack
-      #run: dotnet pack --configuration Release -p:PackageVersion=$package_version
+    - name: Pack
+      run: dotnet pack --configuration Release -p:PackageVersion=1.0.0.31
       
-    #- name: Push
-      #run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }} --no-symbols 1
+    - name: Push
+      run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }} --no-symbols 1
      

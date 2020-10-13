@@ -30,9 +30,9 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       
-    - name: Pack
+    #- name: Pack
       #run: dotnet pack --configuration Release -p:PackageVersion=$package_version
       
-    - name: Push
+    #- name: Push
       #run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }} --no-symbols 1
      

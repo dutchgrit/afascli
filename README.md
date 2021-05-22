@@ -53,6 +53,13 @@ After you receive the mail, you can activate (actual get the token) by running
 afas-cli tokenactivate --user 12345.yourname --code <activationcode-by-mail> 
 ```
 
+### Update the tool
+
+To update / upgrade the tool to the latest version
+
+```
+dotnet tool update afas-cli --global
+```
 
 
 

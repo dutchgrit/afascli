@@ -21,7 +21,7 @@ namespace DutchGrit.Afas
                 cmd.Description = "Request a token for a specified user.";
                 cmd.OnValidate((ctx) =>
                 {
-                    if (!config.IsValidForOtp) { return new ValidationResult("A valid configuration (with ApiKey and EnviromentKey) could not be found. Use [config]."); }
+                    if ((config==null) || (!config.IsValidForOtp)) { return new ValidationResult("A valid configuration (with ApiKey and EnviromentKey) could not be found. Use [config]."); }
                     return ValidationResult.Success;
                 });
 

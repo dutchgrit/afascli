@@ -24,7 +24,7 @@ namespace DutchGrit.Afas
                 //generate will only work with a valid Afas Token.
                 generateCmd.OnValidate((ctx) =>
                 {
-                    if (!config.HasToken) { return new ValidationResult("A valid configuration (with token) could not be found. Use [config].  "); }
+                    if ((config==null) || (!config.HasToken)) { return new ValidationResult("A valid configuration (with token) could not be found. Use [config].  "); }
                     return ValidationResult.Success;
                 });
 

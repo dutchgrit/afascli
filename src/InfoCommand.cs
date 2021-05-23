@@ -15,7 +15,7 @@ namespace DutchGrit.Afas
                 cmd.Description = "Show Afas connector information.";
                 cmd.OnValidate((ctx) =>
                 {
-                    if (!config.HasToken) { return new ValidationResult("A valid configuration (with token) could not be found. Use [config].  "); }
+                    if ((config==null) || (!config.HasToken)) { return new ValidationResult("A valid configuration (with token) could not be found. Use [config].  "); }
                     return ValidationResult.Success;
                 });
                 cmd.OnExecute(() =>

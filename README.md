@@ -1,5 +1,5 @@
 ![.NET Core](https://github.com/dutchgrit/afascli/workflows/.NET%20Core/badge.svg)
-
+[![nuget badge](https://img.shields.io/nuget/v/Afas-Cli.svg)](https://www.nuget.org/packages/Afas-Cli/)
 
 # afas - cli
 An Afas CommandLine tool for connection info, token requests, class generation and more.

@@ -1,7 +1,7 @@
 name: .NET Core
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
     
 defaults:
   run:
@@ -9,7 +9,7 @@ defaults:
     
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       
     - name: Pack
-      run: dotnet pack --configuration Release -p:PackageVersion=1.0.31
+      run: dotnet pack --configuration Release -p:PackageVersion=1.0.32
       
     - name: Push
       run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_DEPLOY_KEY }} --no-symbols 1

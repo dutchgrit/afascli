@@ -21,6 +21,8 @@ namespace DutchGrit.Afas
                 var optionCode = cmd.Option("-c|--code <CODE>", "Required. The activationcode send by mail.", CommandOptionType.SingleValue)
                     .IsRequired();
 
+                var optionSkip = cmd.Option("-s|--skip", "Option. Skip saving the received token in the config file (afas-cli.json).", CommandOptionType.NoValue);
+              
                 cmd.Description = "Gets a token for the specified user and its activationcode ";
                 cmd.OnValidate((ctx) =>
                 {
@@ -36,6 +38,14 @@ namespace DutchGrit.Afas
                     {
                         var token = await client.GetOtpTokenValidation(optionUser.Value(), optionCode.Value());
                         Console.WriteLine(token);
+
+                        if (!optionSkip.HasValue())
+                        {
+                            //store the token also in the current config
+                            config.EncToken = Cryptor.Encrypt(token, Cryptor.phrase);
+                            config.WriteConfig();
+                        }
+
                     }
                     catch (Exception)
                     {

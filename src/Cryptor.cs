@@ -25,7 +25,7 @@ namespace DutchGrit.Afas
             byte[] bytes1 = Encoding.ASCII.GetBytes("tu89geji340t89u2");
             byte[] buffer = Convert.FromBase64String(cipherText);
             byte[] bytes2 = new PasswordDeriveBytes(passPhrase, (byte[])null).GetBytes(32);
-            RijndaelManaged rijndaelManaged = new RijndaelManaged();
+            var rijndaelManaged = Aes.Create("AesManaged");
             rijndaelManaged.Mode = CipherMode.CBC;
             using (MemoryStream memoryStream = new MemoryStream(buffer))
             {
@@ -44,7 +44,7 @@ namespace DutchGrit.Afas
             byte[] bytes1 = Encoding.UTF8.GetBytes("tu89geji340t89u2");
             byte[] bytes2 = Encoding.UTF8.GetBytes(plainText);
             byte[] bytes3 = new PasswordDeriveBytes(passPhrase, (byte[])null).GetBytes(32);
-            RijndaelManaged rijndaelManaged = new RijndaelManaged();
+            var rijndaelManaged = Aes.Create("AesManaged");
             rijndaelManaged.Mode = CipherMode.CBC;
             using (MemoryStream memoryStream = new MemoryStream())
             {

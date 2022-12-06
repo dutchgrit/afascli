@@ -21,6 +21,12 @@ namespace DutchGrit.Afas
             {
                 generateCmd.Description = "Generate the C# Get- and UpdateConnector files for AfasClient";
 
+
+                var optionNamespace = generateCmd.Option("-n|--namespace <NAMESPACE>", "Optionally. A custom namespace during code generation.", CommandOptionType.SingleValue);
+
+                var optionInternal = generateCmd.Option("-i|--useInternal", "Optionally. Generate internal instead of public classes.", CommandOptionType.NoValue);
+
+
                 //generate will only work with a valid Afas Token.
                 generateCmd.OnValidate((ctx) =>
                 {
@@ -36,6 +42,18 @@ namespace DutchGrit.Afas
                     //Make sure the folder exists.
                     System.IO.Directory.CreateDirectory(DestinationFolder);
 
+                    //Set the emittor Options
+                    var emitOptions = new EmitOptions();
+                    if (optionNamespace.HasValue())
+                    {
+                        emitOptions.NameSpace = optionNamespace.Value();
+                    }
+
+                    if (optionInternal.HasValue())
+                    {
+                        emitOptions.UsePublicClass = false;
+                    }
+
                     var si = await client.GetSessionInfoAsync();
 
                     if (si.GetConnectors != null) {
@@ -43,7 +61,7 @@ namespace DutchGrit.Afas
                         {
                             var meta = await client.GetMetaDataGetConAsync(connector.Id);
                             Console.WriteLine($"Processing : {meta.Name}");
-                            SaveGetConnector(meta);
+                            SaveGetConnector(meta, emitOptions);
                         }
                     }
 
@@ -53,7 +71,7 @@ namespace DutchGrit.Afas
                     foreach (var meta in updMetas)
                     {
                         Console.WriteLine($"Processing : {meta.Name}");
-                        SaveUpdateConnector(meta);
+                        SaveUpdateConnector(meta, emitOptions);
                     }
                     
 
@@ -62,16 +80,16 @@ namespace DutchGrit.Afas
         }
 
 
-        private static void SaveGetConnector(GetConMetaInfo meta)
+        private static void SaveGetConnector(GetConMetaInfo meta, EmitOptions options)
         {
-            var source = GetConEmit.EmitGetConnector(meta);
+            var source = GetConEmit.EmitGetConnector(meta,options);
             var destFile = $"{DestinationFolder}\\{Utils.StripUnderscore(meta.Name)}.cs";
             System.IO.File.WriteAllText(destFile, source);
         }
 
-        private static void SaveUpdateConnector(UpdateConMetaInfo meta)
+        private static void SaveUpdateConnector(UpdateConMetaInfo meta, EmitOptions options)
         {
-            var source = UpdateConEmit.EmitUpdateConnector(meta);
+            var source = UpdateConEmit.EmitUpdateConnector(meta,options);
             var destFile = $"{DestinationFolder}\\{Utils.StripUnderscore(meta.Name)}.cs";
             System.IO.File.WriteAllText(destFile, source);
         }

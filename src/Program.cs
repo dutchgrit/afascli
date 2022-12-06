@@ -21,6 +21,8 @@ namespace AfasClient.Cli
 
             app.VersionOptionFromAssemblyAttributes(Assembly.GetExecutingAssembly());
 
+            
+
             //READ CONFIG IS AVAILABLE
             config = ConfigFile.ReadConfig();
         

@@ -8,7 +8,7 @@ Use this tool to generate the C# typed classes, you need for the [AfasClient lib
 
 ## Prerequisites
 
-You need to have the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) or installed to use this tool.
+To USE the tool , you need to have the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) or [.NET Core 6.0 SDK](https://dotnet.microsoft.com/download/dotnet-core) installed to use this tool.
 
 > The generated code, along with the `DutchGrit.AfasClient` library, is .NET Standard 2.0.
 

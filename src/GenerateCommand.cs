@@ -3,6 +3,7 @@ using McMaster.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,7 @@ namespace DutchGrit.Afas
     {
 
         private static string DestinationFolder = "Connectors";
+        private static char Separator = Path.DirectorySeparatorChar;
 
         public static void AddGenerateCommand(this CommandLineApplication app, ConfigFile config)
         {
@@ -82,15 +84,16 @@ namespace DutchGrit.Afas
 
         private static void SaveGetConnector(GetConMetaInfo meta, EmitOptions options)
         {
-            var source = GetConEmit.EmitGetConnector(meta,options);
-            var destFile = $"{DestinationFolder}\\{Utils.StripUnderscore(meta.Name)}.cs";
+            var source = GetConEmit.EmitGetConnector(meta, options);
+            var destFile = $"{DestinationFolder}{Separator}{Utils.StripUnderscore(meta.Name)}.cs";
             System.IO.File.WriteAllText(destFile, source);
         }
 
         private static void SaveUpdateConnector(UpdateConMetaInfo meta, EmitOptions options)
         {
             var source = UpdateConEmit.EmitUpdateConnector(meta,options);
-            var destFile = $"{DestinationFolder}\\{Utils.StripUnderscore(meta.Name)}.cs";
+            
+            var destFile = $"{DestinationFolder}{Separator}{Utils.StripUnderscore(meta.Name)}.cs";
             System.IO.File.WriteAllText(destFile, source);
         }
 

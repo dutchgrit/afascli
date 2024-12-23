@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <RootNamespace>DutchGrit.Afas</RootNamespace>
     <AssemblyName>afas-cli</AssemblyName>
     <VersionPrefix>1.0</VersionPrefix>
@@ -16,9 +16,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>afas-cli</ToolCommandName>
-    <Version>1.0.39</Version>
-    <AssemblyVersion>1.0.39.0</AssemblyVersion>
-    <FileVersion>1.0.39.0</FileVersion>
+    <Version>1.0.41</Version>
+    <AssemblyVersion>1.0.41.0</AssemblyVersion>
+    <FileVersion>1.0.41.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
